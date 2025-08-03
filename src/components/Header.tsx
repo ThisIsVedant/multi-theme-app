@@ -6,7 +6,7 @@ import { usePathname } from "next/navigation"
 import { useTheme } from "@/context/ThemeContext"
 
 export const Header = () => {
-    const { currentTheme, setTheme, theme } = useTheme()
+    const {theme, setTheme, currentTheme} = useTheme()
     const [isDropdownOpen, setIsDropdownOpen] = useState(false)
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
     const pathname = usePathname()
@@ -22,16 +22,18 @@ export const Header = () => {
         setIsMobileMenuOpen(false)
     }, [pathname])
 
+    console.log(currentTheme.text,"Baby")
+
     return (
-        <header className={`fixed top-0 left-0 right-0 z-50 ${currentTheme.header} border-b ${currentTheme.text} transition-all duration-500`}>
+        <header className={`fixed top-0 left-0 right-0 z-50 ${currentTheme.header} border-b ${currentTheme.text} ${currentTheme.font} transition-all duration-500`}>
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="flex justify-between items-center h-16">
                     {/* Logo */}
-                    <Link href="/" className={`flex items-center space-x-2 ${currentTheme.text}`}>
-                        <div className="w-8 h-8 rounded-lg flex items-center justify-center font-bold !bg-blue-500 text-white dark:bg-white">
+                    <Link href="/" className={`flex items-center space-x-2`}>
+                        <div className={`w-8 h-8 rounded-lg flex items-center justify-center font-bold ${currentTheme.button} `}>
                             MT
                         </div>
-                        <span className="text-xl font-bold">MultiTheme</span>
+                        <span className={`text-xl font-bold ${currentTheme.textSecondary}`}>MultiTheme</span>
                     </Link>
 
                     {/* Desktop Navigation */}
@@ -40,7 +42,7 @@ export const Header = () => {
                             <Link
                                 key={href}
                                 href={href}
-                                className={`transition-colors duration-200 hover:opacity-80 ${pathname === href ? "font-semibold" : ""} ${currentTheme.text}`}
+                                className={`transition-colors duration-200 hover:opacity-80 ${pathname === href ? `font-semibold ${currentTheme.title}` : ""}`}
                             >
                                 {label}
                             </Link>
@@ -64,7 +66,7 @@ export const Header = () => {
                             <div
                                 className={`absolute right-0 mt-2 w-40 rounded-lg shadow-lg border ${currentTheme.card} z-50 transition-all duration-200`}
                             >
-                                {["Minimalist", "Dark Professional", "Colorful"].map((t) => (
+                                {["light", "dark", "colorful"].map((t) => (
                                     <button
                                         key={t}
                                         onClick={() => {
@@ -75,7 +77,7 @@ export const Header = () => {
                                             theme === t ? "font-semibold" : ""
                                         } ${currentTheme.text}`}
                                     >
-                                        {t.charAt(0).toUpperCase() + t.slice(1)} Theme
+                                        {t.charAt(0).toUpperCase() + t.slice(1)}
                                     </button>
                                 ))}
                             </div>

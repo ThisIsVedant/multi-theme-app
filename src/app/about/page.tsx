@@ -1,6 +1,10 @@
 "use client"
 
+import {useTheme} from "@/context/ThemeContext";
+
 export default function AboutPage() {
+    const { currentTheme } = useTheme();
+
     const features = [
         {
             icon: "🎨",
@@ -25,12 +29,12 @@ export default function AboutPage() {
     ]
 
     return (
-        <main className="bg-white text-gray-900 min-h-screen px-6 py-12">
+        <main className={`${currentTheme.bg} ${currentTheme.font} ${currentTheme.text} min-h-screen px-6 py-12`}>
             <div className="max-w-5xl mx-auto">
                 {/* Hero Section */}
                 <section className="text-center space-y-6 mb-20">
-                    <h1 className="text-4xl md:text-6xl font-bold">
-                        About <span className="text-blue-600">MultiTheme</span>
+                    <h1 className={`text-4xl md:text-6xl font-bold ${currentTheme.textSecondary}`}>
+                        About <span className={`${currentTheme.title}`}>MultiTheme</span>
                     </h1>
                     <p className="text-lg md:text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
                         MultiTheme is a cutting-edge React application that demonstrates the power of dynamic theming and modern web development practices.
@@ -38,7 +42,7 @@ export default function AboutPage() {
                 </section>
 
                 {/* Mission Section */}
-                <section className="bg-gray-50 border border-gray-200 rounded-2xl p-8 md:p-12 text-center mb-20">
+                <section className={`${currentTheme.card} rounded-2xl p-8 md:p-12 text-center mb-20`}>
                     <h2 className="text-3xl md:text-4xl font-bold mb-6">Our Mission</h2>
                     <p className="text-lg text-gray-600 max-w-4xl mx-auto leading-relaxed">
                         We believe that user experience should be personal and adaptable. Our mission is to create applications
@@ -73,13 +77,13 @@ export default function AboutPage() {
                 </section>
 
                 {/* Team Section */}
-                <section className="bg-blue-50 border border-blue-200 rounded-2xl p-8 md:p-12 text-center">
-                    <h2 className="text-3xl md:text-4xl font-bold mb-6">Built with Passion</h2>
+                <section className={`${currentTheme.secondaryCard} rounded-2xl p-8 md:p-12 text-center`}>
+                    <h2 className={`text-3xl md:text-4xl font-bold mb-6 ${currentTheme.textSecondary}`}>Built with Passion</h2>
                     <p className="text-lg text-gray-700 max-w-3xl mx-auto mb-8">
                         MultiTheme was crafted by a team of passionate developers who believe in the power of great design and
                         user experience. Every line of code was written with care and attention to detail.
                     </p>
-                    <button className="bg-blue-600 text-white px-8 py-4 rounded-lg font-semibold hover:bg-blue-700 transition">
+                    <button className={`${currentTheme.button} px-8 py-4 rounded-lg font-semibold transition`}>
                         Join Our Team
                     </button>
                 </section>

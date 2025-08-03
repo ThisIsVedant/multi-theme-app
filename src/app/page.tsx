@@ -1,6 +1,8 @@
 "use client"
 
 import { useEffect, useState } from "react"
+import {Header} from "@/components/Header";
+import {useTheme} from "@/context/ThemeContext";
 
 export interface Product {
     id: number
@@ -14,6 +16,7 @@ export default function HomePage() {
     const [products, setProducts] = useState<Product[]>([])
     const [loading, setLoading] = useState(true)
     const [error, setError] = useState<string | null>(null)
+    const { currentTheme } = useTheme();
 
     useEffect(() => {
         const fetchProducts = async () => {
@@ -40,30 +43,31 @@ export default function HomePage() {
     ]
 
     return (
-        <main className="bg-white text-gray-900 min-h-screen px-6 py-12">
-            <div className="max-w-7xl mx-auto">
+        <main className={`text-gray-900 min-h-screen px-6 py-12 ${currentTheme.font} ${currentTheme.bg}`}>
+            {/*<Header/>*/}
+            <div className="max-w-7xl mx-auto mt-10">
                 {/* Hero Section */}
                 <section className="text-center space-y-6 mb-20">
-                    <h1 className="text-4xl md:text-6xl font-bold">
-                        Welcome to <span className="text-blue-600">MultiTheme</span>
+                    <h1 className={`text-4xl md:text-6xl font-bold ${currentTheme.textSecondary}`}>
+                        Welcome to <span className={`${currentTheme.title}`}>MultiTheme</span>
                     </h1>
-                    <p className="text-lg md:text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+                    <p className={`text-lg md:text-xl max-w-3xl mx-auto leading-relaxed ${currentTheme.textSecondary}`}>
                         Experience the power of dynamic theming with our innovative multi-theme switcher. Transform your entire
                         application&apos;s look and feel with just one click.
                     </p>
 
                     <div className="flex flex-col sm:flex-row gap-4 justify-center pt-6">
-                        <button className="bg-blue-600 text-white px-8 py-4 rounded-lg font-semibold hover:bg-blue-700 transition">
+                        <button className={`${currentTheme.button} px-8 py-4 rounded-lg font-semibold transition`}>
                             Explore Products
                         </button>
-                        <button className="border-2 border-blue-600 text-blue-600 px-8 py-4 rounded-lg font-semibold hover:bg-blue-50 transition">
+                        <button className={`${currentTheme.buttonSecondary} border-2 px-8 py-4 rounded-lg font-semibold transition`}>
                             Learn More
                         </button>
                     </div>
                 </section>
 
                 {/* Stats Section */}
-                <section className="bg-gray-50 border border-gray-200 rounded-2xl p-8 mb-20">
+                <section className={`${currentTheme.header} ${currentTheme.text} rounded-2xl p-8 mb-20`}>
                     <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
                         {stats.map((stat, index) => (
                             <div key={index} className="text-center space-y-3">

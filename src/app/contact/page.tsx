@@ -1,8 +1,10 @@
 "use client"
 
 import { useState } from "react"
+import {useTheme} from "@/context/ThemeContext";
 
 export default function ContactPage() {
+    const { currentTheme } = useTheme();
     const [formData, setFormData] = useState({
         name: "",
         email: "",
@@ -29,9 +31,9 @@ export default function ContactPage() {
     }
 
     return (
-        <main className="bg-white text-gray-900 min-h-screen px-6 py-12">
+        <main className={`${currentTheme.bg} ${currentTheme.font} ${currentTheme.text} min-h-screen px-6 py-12`}>
             <div className="max-w-4xl mx-auto">
-                <h1 className="text-4xl font-bold text-center mb-4">Get in <span className="text-blue-600">Touch</span></h1>
+                <h1 className={`text-4xl font-bold text-center mb-4 ${currentTheme.textSecondary}`}>Get in <span className={`${currentTheme.text}`}>Touch</span></h1>
                 <p className="text-center text-gray-600 mb-12">
                     We'd love to hear from you. Fill out the form and we’ll get back to you shortly.
                 </p>
@@ -54,7 +56,7 @@ export default function ContactPage() {
                                         value={formData.name}
                                         onChange={handleChange}
                                         required
-                                        className="w-full border border-gray-300 px-4 py-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                                        className="placeholder-gray-500 w-full border border-gray-300 px-4 py-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
                                         placeholder="Your name"
                                     />
                                 </div>
@@ -66,7 +68,7 @@ export default function ContactPage() {
                                         value={formData.email}
                                         onChange={handleChange}
                                         required
-                                        className="w-full border border-gray-300 px-4 py-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                                        className="placeholder-gray-500 w-full border border-gray-300 px-4 py-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
                                         placeholder="your@email.com"
                                     />
                                 </div>
@@ -80,7 +82,7 @@ export default function ContactPage() {
                                     value={formData.subject}
                                     onChange={handleChange}
                                     required
-                                    className="w-full border border-gray-300 px-4 py-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                                    className="placeholder-gray-500 w-full border border-gray-300 px-4 py-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
                                     placeholder="What's this about?"
                                 />
                             </div>
@@ -93,14 +95,14 @@ export default function ContactPage() {
                                     value={formData.message}
                                     onChange={handleChange}
                                     required
-                                    className="w-full border border-gray-300 px-4 py-3 rounded-lg resize-none focus:outline-none focus:ring-2 focus:ring-blue-500"
+                                    className="placeholder-gray-500 w-full border border-gray-300 px-4 py-3 rounded-lg resize-none focus:outline-none focus:ring-2 focus:ring-blue-500"
                                     placeholder="Tell us more about your project..."
                                 />
                             </div>
 
                             <button
                                 type="submit"
-                                className="w-full bg-blue-600 text-white py-3 rounded-lg font-semibold hover:bg-blue-700 transition"
+                                className={`w-full text-white py-3 rounded-lg font-semibold transition ${currentTheme.button}`}
                             >
                                 📤 Send Message
                             </button>
