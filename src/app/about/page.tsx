@@ -2,6 +2,7 @@
 
 import { useTheme } from '@/context/ThemeContext';
 import { Sidebar } from '@/components/SideBar';
+import { useIsMobile } from '@/hooks/useIsMobile';
 
 export default function AboutPage() {
   const { currentTheme } = useTheme();
@@ -33,10 +34,10 @@ export default function AboutPage() {
 
   return (
     <>
-      <Sidebar />
+      {!useIsMobile() && currentTheme.layout.hasSidebar && <Sidebar />}
       <main
-        className={`${currentTheme.bg} ${currentTheme.font} ${currentTheme.text} min-h-screen px-6 py-12 pt-16 ${
-          currentTheme.layout.hasSidebar ? 'ml-64' : ''
+        className={`${currentTheme.bg} ${currentTheme.font} ${currentTheme.text} min-h-screen px-6 py-12 pt-26 ${
+          currentTheme.layout.hasSidebar ? 'md:ml-64 sm:ml-0' : ''
         }`}
       >
         <div className="max-w-5xl mx-auto">
@@ -81,7 +82,9 @@ export default function AboutPage() {
                   <div className="w-12 h-12 bg-blue-100 flex items-center justify-center rounded-lg text-2xl mb-4">
                     {feature.icon}
                   </div>
-                  <h3 className="text-xl font-semibold mb-2">{feature.title}</h3>
+                  <h3 className={`text-xl font-semibold mb-2 ${currentTheme.title}`}>
+                    {feature.title}
+                  </h3>
                   <p className="text-gray-600 leading-relaxed">{feature.description}</p>
                 </div>
               ))}
@@ -90,7 +93,7 @@ export default function AboutPage() {
 
           {/* Team Section */}
           <section className={`${currentTheme.secondaryCard} rounded-2xl p-8 md:p-12 text-center`}>
-            <h2 className={`text-3xl md:text-4xl font-bold mb-6 ${currentTheme.textSecondary}`}>
+            <h2 className={`text-3xl md:text-4xl font-bold mb-6 ${currentTheme.title}`}>
               Built with Passion
             </h2>
             <p className="text-lg text-gray-700 max-w-3xl mx-auto mb-8">

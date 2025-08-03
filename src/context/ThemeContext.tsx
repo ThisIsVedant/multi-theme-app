@@ -13,6 +13,7 @@ interface ThemeConfig {
   secondaryCard: string;
   text: string;
   textSecondary: string;
+  textArea: string;
   button: string;
   buttonSecondary: string;
   font: string;
@@ -38,13 +39,15 @@ const themeStyles: Record<ThemeType, ThemeConfig> = {
     card: 'bg-white border border-gray-200 ',
     secondaryCard: 'bg-blue-50 border border-blue-200',
     text: 'text-gray-900',
+    textArea: 'text-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500',
     textSecondary: 'text-gray-600',
     button: 'bg-blue-600 text-white hover:bg-blue-700',
     buttonSecondary: 'bg-white text-blue-600 hover:text-blue-500',
-    font: 'font-sans',
+    font: 'font-sans text-base md:text-lg',
     layout: {
       hasSidebar: false,
     },
+    // margin: 'm-6 md:m-12',              // add margin classes here
   },
   dark: {
     title: 'text-amber-500',
@@ -54,6 +57,7 @@ const themeStyles: Record<ThemeType, ThemeConfig> = {
     secondaryCard: 'bg-amber-100 border border-amber-500',
     text: 'text-white',
     textSecondary: 'text-gray-300',
+    textArea: 'text-gray-500 focus:outline-none focus:ring-2 focus:ring-amber-500',
     button: 'bg-amber-500 text-black hover:bg-amber-600',
     buttonSecondary: 'bg-gray-900 text-amber-500 hover:text-amber-600',
     font: 'font-serif font-bold',
@@ -69,9 +73,10 @@ const themeStyles: Record<ThemeType, ThemeConfig> = {
     secondaryCard: 'bg-pink-200 border border-blue-200',
     text: 'text-pink-500',
     textSecondary: 'text-black',
+    textArea: 'text-pink-500 focus:outline-none focus:ring-2 focus:ring-pink-500',
     button: 'bg-pink-500 text-white hover:bg-pink-400',
     buttonSecondary: 'text-pink-500 hover:text-pink-400',
-    font: 'font-pacifico',
+    font: 'font-pacifico text-lg md:text-2xl',
     layout: {
       hasSidebar: false,
     },

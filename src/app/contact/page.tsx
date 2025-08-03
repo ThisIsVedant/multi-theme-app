@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import { useTheme } from '@/context/ThemeContext';
 import { Sidebar } from '@/components/SideBar';
+import { useIsMobile } from '@/hooks/useIsMobile';
 
 export default function ContactPage() {
   const { currentTheme } = useTheme();
@@ -33,15 +34,15 @@ export default function ContactPage() {
 
   return (
     <>
-      <Sidebar />
+      {!useIsMobile() && currentTheme.layout.hasSidebar && <Sidebar />}
       <main
-        className={`${currentTheme.bg} ${currentTheme.font} ${currentTheme.text} min-h-screen px-6 py-12 pt-16 ${
-          currentTheme.layout.hasSidebar ? 'ml-64' : ''
+        className={`${currentTheme.bg} ${currentTheme.font} ${currentTheme.text} min-h-screen px-6 py-12 pt-32 ${
+          currentTheme.layout.hasSidebar ? 'md:ml-64 sm:ml-0' : ''
         }`}
       >
         <div className="max-w-4xl mx-auto">
           <h1 className={`text-4xl font-bold text-center mb-4 ${currentTheme.textSecondary}`}>
-            Get in <span className={`${currentTheme.text}`}>Touch</span>
+            Get in <span className={`${currentTheme.title}`}>Touch</span>
           </h1>
           <p className="text-center text-gray-600 mb-12">
             We&apos;d love to hear from you. Fill out the form and we’ll get back to you shortly.
@@ -65,7 +66,7 @@ export default function ContactPage() {
                       value={formData.name}
                       onChange={handleChange}
                       required
-                      className="placeholder-gray-500 w-full border border-gray-300 px-4 py-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                      className={`placeholder-gray-500 w-full border border-gray-300 px-4 py-3 rounded-lg ${currentTheme.textArea}`}
                       placeholder="Your name"
                     />
                   </div>
@@ -77,7 +78,7 @@ export default function ContactPage() {
                       value={formData.email}
                       onChange={handleChange}
                       required
-                      className="placeholder-gray-500 w-full border border-gray-300 px-4 py-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                      className={`placeholder-gray-500 w-full border border-gray-300 px-4 py-3 rounded-lg ${currentTheme.textArea}`}
                       placeholder="your@email.com"
                     />
                   </div>
@@ -91,7 +92,7 @@ export default function ContactPage() {
                     value={formData.subject}
                     onChange={handleChange}
                     required
-                    className="placeholder-gray-500 w-full border border-gray-300 px-4 py-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    className={`placeholder-gray-500 w-full border border-gray-300 px-4 py-3 rounded-lg ${currentTheme.textArea}`}
                     placeholder="What's this about?"
                   />
                 </div>
@@ -104,7 +105,7 @@ export default function ContactPage() {
                     value={formData.message}
                     onChange={handleChange}
                     required
-                    className="placeholder-gray-500 w-full border border-gray-300 px-4 py-3 rounded-lg resize-none focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    className={`placeholder-gray-500 w-full border border-gray-300 px-4 py-3 rounded-lg resize-none ${currentTheme.textArea}`}
                     placeholder="Tell us more about your project..."
                   />
                 </div>

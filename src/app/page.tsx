@@ -3,6 +3,7 @@
 import { useEffect, useState } from 'react';
 import { useTheme } from '@/context/ThemeContext';
 import { Sidebar } from '@/components/SideBar';
+import { useIsMobile } from '@/hooks/useIsMobile';
 
 export interface Product {
   id: number;
@@ -44,7 +45,7 @@ export default function HomePage() {
 
   return (
     <>
-      <Sidebar />
+      {!useIsMobile() && currentTheme.layout.hasSidebar && <Sidebar />}
       <main
         className={`text-gray-900 min-h-screen px-6 py-12 pt-16 ${currentTheme.font} ${currentTheme.bg} ${
           currentTheme.layout.hasSidebar ? 'md:ml-64 sm:ml-0' : ''
