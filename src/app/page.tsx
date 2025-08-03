@@ -47,7 +47,7 @@ export default function HomePage() {
     <>
       {!useIsMobile() && currentTheme.layout.hasSidebar && <Sidebar />}
       <main
-        className={`text-gray-900 min-h-screen px-6 py-12 pt-16 ${currentTheme.font} ${currentTheme.bg} ${
+        className={`text-gray-900 min-h-screen px-6 py-12 pt-16 transition-all ${currentTheme.font} ${currentTheme.bg} ${
           currentTheme.layout.hasSidebar ? 'md:ml-64 sm:ml-0' : ''
         }`}
       >

@@ -36,7 +36,7 @@ export default function ContactPage() {
     <>
       {!useIsMobile() && currentTheme.layout.hasSidebar && <Sidebar />}
       <main
-        className={`${currentTheme.bg} ${currentTheme.font} ${currentTheme.text} min-h-screen px-6 py-12 pt-32 ${
+        className={`${currentTheme.bg} ${currentTheme.font} ${currentTheme.text} min-h-screen px-6 py-12 pt-32 transition-all ${
           currentTheme.layout.hasSidebar ? 'md:ml-64 sm:ml-0' : ''
         }`}
       >

@@ -36,7 +36,7 @@ export default function AboutPage() {
     <>
       {!useIsMobile() && currentTheme.layout.hasSidebar && <Sidebar />}
       <main
-        className={`${currentTheme.bg} ${currentTheme.font} ${currentTheme.text} min-h-screen px-6 py-12 pt-26 ${
+        className={`${currentTheme.bg} ${currentTheme.font} ${currentTheme.text} min-h-screen px-6 py-12 pt-26 transition-all ${
           currentTheme.layout.hasSidebar ? 'md:ml-64 sm:ml-0' : ''
         }`}
       >
