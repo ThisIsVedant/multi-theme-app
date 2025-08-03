@@ -1,6 +1,6 @@
-# Multi-Theme Switcher App
+# Multi-Theme App
 
-🔗 **Live Demo:** [multi-theme-switcher-react-app.vercel.app](https://multi-theme-switcher-react-app.vercel.app/)
+🔗 **Live Demo:** [multi-theme-react-based-app.vercel.app](https://multi-theme-react-based-app.vercel.app/)
 
 A dynamic, theme-aware React (Next.js + TypeScript) based web application that allows users to toggle between **three distinctly styled themes**. This project demonstrates responsive design, persistent theming, and component-level adaptation using **Context API** and **Tailwind CSS**.
 
@@ -14,14 +14,14 @@ To build a React-based application featuring:
 - **Persistent** theme using `localStorage`
 - Responsive design with distinct typography, spacing, and component styles per theme
 - Data fetching via a public API
-- Navigation using **React Router**
+- Navigation using **React Router (Next.js routing)**
 
 ---
 
 ## 🚀 Features
 
 - 🌗 **Theme Switching**:
-  - **Theme 1** (Minimalist): Light layout, simple sans-serif font, clean spacing
+  - **Theme 1** (Light): Light layout, simple sans-serif font, clean spacing
   - **Theme 2** (Dark): Sidebar layout, bold serif font, darker palette
   - **Theme 3** (Colorful): Grid layout, vibrant colors, playful Pacifico font
 
@@ -54,7 +54,9 @@ src/
 │   ├── Header.tsx                  # Top header with app name and theme dropdown
 │   └── SideBar.tsx                 # Sidebar navigation (visible in dark mode or specific themes)
 ├── context/                        # React Contexts
-│   └── ThemeContext.tsx            # Theme context for managing and persisting current theme
+│   └── ThemeContext.tsx            # Theme context using Context API and localStorage
+├── hooks/
+│   └── useIsMobile.ts              # Detects if the current viewport is mobile-sized (for responsive layouts)
 ```
 
 ---
@@ -76,8 +78,8 @@ src/
 ### 1. Clone the Repo
 
 ```bash
-git clone https://github.com/your-username/multi-theme-switcher.git
-cd multi-theme-switcher
+git clone https://github.com/ThisIsVedant/multi-theme-app
+cd multi-theme-app
 ```
 
 ### 2. Install Dependencies
@@ -102,4 +104,4 @@ Feel free to fork this repo and enhance the theming logic, add animation, or imp
 
 ## 📜 License
 
-MIT License © 2025 [Vedant Sharma]
+MIT License © 2025 Vedant Sharma
