@@ -16,7 +16,9 @@ interface ThemeConfig {
     button: string;
     buttonSecondary: string;
     font: string;
-    layout: string;
+    layout: {
+        hasSidebar: boolean,
+    }
 }
 
 interface ThemeContextType {
@@ -34,40 +36,46 @@ const themeStyles: Record<ThemeType, ThemeConfig> = {
         title: "text-blue-600",
         bg: "bg-gray-50",
         header: "bg-white shadow-sm border-b border-gray-100",
-        card: "bg-white border border-gray-200 shadow-sm",
+        card: "bg-white border border-gray-200 ",
         secondaryCard: "bg-blue-50 border border-blue-200",
         text: "text-gray-900",
         textSecondary: "text-gray-600",
         button: "bg-blue-600 text-white hover:bg-blue-700",
         buttonSecondary: "bg-white text-blue-600 hover:text-blue-500",
         font: "font-sans",
-        layout: "minimal"
+        layout: {
+            hasSidebar: false,
+        }
     },
     dark: {
         title: "text-amber-500",
         bg: "bg-gray-900",
         header: "bg-gray-800 shadow-sm border-b border-gray-700",
-        card: "bg-gray-800 border border-gray-700 shadow-lg",
+        card: "bg-gray-800 border border-gray-700",
         secondaryCard: "bg-amber-100 border border-amber-500",
         text: "text-white",
         textSecondary: "text-gray-300",
         button: "bg-amber-500 text-black hover:bg-amber-600",
         buttonSecondary: "bg-gray-900 text-amber-500 hover:text-amber-600",
         font: "font-serif font-bold",
-        layout: "sidebar"
+        layout: {
+            hasSidebar: true,
+        }
     },
     colorful: {
         title: "text-pink-500",
         bg: "bg-amber-100",
         header: "bg-white backdrop-blur-md shadow-sm border-b border-indigo-100",
-        card: "bg-white/90 backdrop-blur-sm border-2 border-indigo-100 shadow-xl",
+        card: "bg-white/90 backdrop-blur-sm border-2 border-indigo-100 ",
         secondaryCard: "bg-pink-200 border border-blue-200",
         text: "text-pink-500",
         textSecondary: "text-black",
         button: "bg-pink-500 text-white hover:bg-pink-400",
         buttonSecondary: "text-pink-500 hover:text-pink-400",
         font: "font-pacifico",
-        layout: "grid"
+        layout: {
+            hasSidebar: false,
+        }
     }
 };
 
